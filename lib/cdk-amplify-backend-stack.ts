@@ -56,7 +56,7 @@ export class BackendTsStack extends Stack {
     const app = new amplify.App(this, "amplify-frontend", {
       role: serviceRole,
       sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
-        owner: "ruralinnovation",
+        owner: "Real-Currents",
         repository: "cdk-amplify-frontend",
         oauthToken: SecretValue.secretsManager("gh_token")
         // $ aws secretsmanager create-secret --name gh_token --secret-string $GITHUB_PAT
@@ -70,6 +70,9 @@ export class BackendTsStack extends Stack {
         patterns: [ 'main*', 'dev*' ],
       },
       environmentVariables: {
+        'APP_VERSION': "1",
+        'API_BACKEND': "https://frontend.ruralopportunitymap.us",
+        'VERSION_AMPLIFY': "10.5.2",
         'USER_POOL_ID': `${SecretValue.secretsManager("userPoolId").unsafeUnwrap()}`,                // userPool.userPoolId,
         'USER_POOL_CLIENT_ID': `${SecretValue.secretsManager("userPoolClientId").unsafeUnwrap()}`,  // userPoolClient.userPoolClientId,
         'IDENTITY_POOL_ID': identityPool.ref,

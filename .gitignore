@@ -1,7 +1,11 @@
 *.idea
-bin
-build
-dist
+*.iml
+
+lib/*.d.ts
+test/*.d.ts
+lib/*.js
+test/*.js
+!jest.config.js
 node_modules
 
 # CDK asset staging directory
